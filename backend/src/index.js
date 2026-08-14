@@ -3,7 +3,7 @@ import cors from 'cors';
 import 'dotenv/config';
 
 import connectDB from './config/db.js';
-
+import authRoutes from './routes/auth.route.js';
 import userRoutes from './routes/user.route.js';
 
 const app = express();
@@ -14,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 // routes
+app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 
 app.listen(port, () => {
