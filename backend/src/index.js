@@ -6,6 +6,7 @@ import "dotenv/config";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/auth.route.js";
 import userRoutes from "./routes/user.route.js";
+import { protectRoute } from "./middleware/protectRoute.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -17,7 +18,7 @@ app.use(cookieParser());
 
 // routes
 app.use("/api/auth", authRoutes);
-app.use("/api/users", userRoutes);
+app.use("/api/users", protectRoute, userRoutes);
 
 app.listen(port, () => {
   connectDB();
