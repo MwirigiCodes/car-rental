@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { HamburgerMenu } from "iconsax-reactjs";
 // import { AnimatePresence, motion } from "motion/react";
 // TODO: install motion package
@@ -17,13 +17,13 @@ const Navbar = () => {
       <h3 className="font-semibold tracking-widest">Car Rental</h3>
       <nav className="hidden md:flex gap-x-5">
         {navlinks.map(({ nav, path }) => (
-          <Link
+          <NavLink
             to={path}
             key={nav}
             className="relative after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:bg-blue-500 after:transition-all after:duration-300 hover:after:w-full"
           >
             {nav}
-          </Link>
+          </NavLink>
         ))}
       </nav>
       <div className="hidden md:flex space-x-5">
