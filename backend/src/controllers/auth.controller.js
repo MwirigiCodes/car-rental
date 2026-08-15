@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs';
 import User from '../models/User.js';
+// import { generateTokens } from '../utils/generateTokens.js';
 
 export const signup = async (req, res) => {
   try {
@@ -20,6 +21,10 @@ export const signup = async (req, res) => {
       email,
       password: hashedPassword,
     });
+
+    // generate jwt tokens
+    // generateTokens(user, res);
+
     res.status(201).json({ message: 'Signed up successfully' });
   } catch (error) {
     console.log('Error in signup controller: ' + error.message);
@@ -40,6 +45,10 @@ export const login = async (req, res) => {
     const match = await bcrypt.compare(password, user.password);
 
     if (!match) return res.status(400).json({ message: 'Invalid creditials' });
+
+    // generate jwt tokens
+    // generateTokens(user, res);
+
     res.status(200).json({ message: 'Logged in successfully' });
   } catch (error) {
     console.log('Error in login controller: ' + error.message);
