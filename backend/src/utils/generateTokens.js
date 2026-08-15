@@ -1,7 +1,5 @@
 import jwt from 'jsonwebtoken';
 
-// TODO: install jsonwebtoken package
-
 export const generateTokens = (user, res) => {
   try {
     const accessToken = jwt.sign(
