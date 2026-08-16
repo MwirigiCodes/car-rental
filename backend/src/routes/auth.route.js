@@ -6,10 +6,16 @@ import {
   refresh,
 } from "../controllers/auth.controller.js";
 
+import {
+  loginValidation,
+  signupValidation,
+  validation,
+} from "../middleware/validation.js";
+
 const router = express.Router();
 
-router.post("/signup", signup);
-router.post("/login", login);
+router.post("/signup", signupValidation, validation, signup);
+router.post("/login", loginValidation, validation, login);
 router.post("/logout", logout);
 router.post("/refresh", refresh);
 
