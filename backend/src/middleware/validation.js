@@ -41,6 +41,36 @@ export const loginValidation = [
     .escape(),
 ];
 
+export const carValidation = [
+  body("brand")
+    .trim()
+    .notEmpty()
+    .withMessage("All fields are required")
+    .isAlpha()
+    .withMessage("Brand contains invalid characters")
+    .escape(),
+  body("model")
+    .trim()
+    .notEmpty()
+    .withMessage("All fields are required")
+    .isAlphanumeric()
+    .withMessage("Model contains invalid characters")
+    .escape(),
+  body("cc")
+    .trim()
+    .notEmpty()
+    .withMessage("All fields are required")
+    .isAlphanumeric()
+    .withMessage("Cc contains invalid characters"),
+  body("year")
+    .trim()
+    .notEmpty()
+    .withMessage("All fields are required")
+    .isNumeric()
+    .withMessage("Year must be numerics only")
+    .escape(),
+];
+
 export const validation = (req, res, next) => {
   try {
     const results = validationResult(req);
